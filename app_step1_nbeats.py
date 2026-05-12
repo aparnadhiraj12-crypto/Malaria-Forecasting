@@ -801,7 +801,7 @@ elif st.session_state.page == "forecast":
                     return "background-color: #d4edda"
 
             st.dataframe(
-                forecast_df.style.applymap(highlight, subset=["Risk Level"]),
+                forecast_df.style.map(highlight, subset=["Risk Level"]),
                 use_container_width=True
             )
 
