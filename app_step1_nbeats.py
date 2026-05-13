@@ -900,26 +900,22 @@ elif st.session_state.page == "forecast":
             # ================= DATA =================
             map_df = pd.DataFrame({
                 "State": [selected_state],
-                "Average Forecasted Cases": [cases_value],
-                "Risk Level": [risk_level]
+                "Average Forecasted Cases": [cases_value]
             })
 
-# ================= CHOROPLETH MAP =================
+            # ================= CHOROPLETH MAP =================
             fig_map = px.choropleth_mapbox(
                 map_df,
                 geojson=india_geojson,
                 locations="State",
                 featureidkey="properties.NAME_1",
+                color="Average Forecasted Cases",
 
-                # 🔥 Use categorical risk instead of numeric cases
-                color="Risk Level",
-
-                # 🎯 Fixed risk colors
-                color_discrete_map={
-                    "Low": "#2ECC71",
-                    "Moderate": "#F39C12",
-                    "High": "#E74C3C"
-                },
+                color_continuous_scale=[
+                    [0, "#2ECC71"],     # Low Risk
+                    [0.5, "#F39C12"],   # Moderate Risk
+                    [1, "#E74C3C"]      # High Risk
+                ],
 
                 mapbox_style="carto-positron",
                 zoom=5,
@@ -931,8 +927,8 @@ elif st.session_state.page == "forecast":
             if risk_level == "High":
                 fig_map.add_trace(
                     go.Scattermapbox(
-                        lat=[26.5],   # adjust if needed
-                        lon=[92.5],   # adjust if needed
+                        lat=[26.5],
+                        lon=[92.5],
                         mode="markers",
                         marker=dict(
                             size=30,
@@ -943,14 +939,63 @@ elif st.session_state.page == "forecast":
                     )
                 )
 
-            # ================= FINAL LAYOUT =================
+            # ================= STATE LABEL (IMPROVED) =================
+            # Extract centroid from GeoJSON for better placement
+            state_lat = None
+            state_lon = None
+
+            for feature in india_geojson["features"]:
+                if feature["properties"]["NAME_1"] == selected_state:
+                    coords = feature["geometry"]["coordinates"]
+
+                    # crude centroid estimation (works for most state polygons)
+                    if feature["geometry"]["type"] == "Polygon":
+                        lon_vals = [p[0] for p in coords[0]]
+                        lat_vals = [p[1] for p in coords[0]]
+                        state_lat = sum(lat_vals) / len(lat_vals)
+                        state_lon = sum(lon_vals) / len(lon_vals)
+
+                    elif feature["geometry"]["type"] == "MultiPolygon":
+                        lon_vals = []
+                        lat_vals = []
+                        for poly in coords:
+                            for p in poly[0]:
+                                lon_vals.append(p[0])
+                                lat_vals.append(p[1])
+                        state_lat = sum(lat_vals) / len(lat_vals)
+                        state_lon = sum(lon_vals) / len(lon_vals)
+
+            # Add label if coordinates found
+            if state_lat and state_lon:
+                fig_map.add_trace(
+                    go.Scattermapbox(
+                    lat=[state_lat],
+                        lon=[state_lon],
+                        mode="text",
+                        text=[selected_state],
+                        textfont=dict(
+                            size=16,
+                            color="#111111",
+                            family="Arial Black"
+                        ),
+                        showlegend=False
+                    )
+                )
+
+            # ================= LAYOUT =================
             fig_map.update_layout(
                 margin=dict(l=0, r=0, t=40, b=0),
                 height=600,
-                coloraxis_showscale=False   # hides numeric colorbar (clean look)
+                coloraxis_colorbar=dict(
+                    title="Average Forecasted Cases",
+                    thickness=18
+                ),
+                mapbox={
+                    "layers": []   # ✅ removes ALL state outlines
+                }
             )
 
-            # ================= DISPLAY MAP =================
+            # ================= DISPLAY =================
             st.plotly_chart(fig_map, use_container_width=True)
 # ======================================================
 # FOOTER
