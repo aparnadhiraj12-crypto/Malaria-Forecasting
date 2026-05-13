@@ -440,19 +440,14 @@ if st.session_state.page == "home":
 
 elif st.session_state.page == "about":
     st.subheader("About Us")
-    st.markdown(
-    """
-    <div style='margin-top: 20px;'></div>
-    """,
-    unsafe_allow_html=True
-    )
+    st.markdown("<br>", unsafe_allow_html=True)
     st.write(
         "Indian Institute of Chemical Technology (IICT), Hyderabad, established in 1944, is a constituent laboratory of the Council of Scientific and Industrial Research (CSIR), New Delhi. With its expertise in chemistry and chemical technology, it provides solutions to challenges faced by Industry, Government Departments and Entrepreneurs through basic and applied research, and process development. The institute is internationally recognized for its contributions to chemistry research and is an ideal place for taking ideas to commercialization through state-of-the-art research and development. CSIR-IICT during its seventy-year journey has made its mark as a dynamic, innovative and result-oriented R&D organization. The clientele spans all comers of the globe. In India, it is CSIR-Indian Institute of Chemical Technology (CSIR-IICT) is one of the oldest National Laboratories the reliable destination of chemical and biotech industries. The reputation that CSIR-IICT could establish amongst the industrial clients as a reliable R&D partner, can be largely attributed to its rich pool of scientists with expertise in broad-ranging research areas and simple and effective business development strategies."
     )
 
 elif st.session_state.page == "data":
     st.subheader("About the Data")
-    
+    st.markdown("<br>", unsafe_allow_html=True)
     st.write(
         "Malaria remains a major public health challenge in the North-Eastern states of India, which contribute a disproportionately high share of the country’s Plasmodium falciparum burden and represent some of the most persistent transmission zones nationally. The region accounts for about 15% of India’s malaria cases and roughly 12% of the national P. falciparum cases, the most severe form of malaria infection.Transmission in this region is sustained by efficient vector species such as Anopheles minimus and Anopheles baimaii, along with favorable ecological conditions including forested terrain, high humidity, and perennial hill streams that support continuous mosquito breeding. In addition, the North-East serves as a critical epidemiological corridor linking India with Southeast Asia, facilitating the historical introduction of antimalarial drug-resistant parasite strains into the country. Many malaria-affected areas in the region are located in tribal and difficult-to-access locations, which further complicates surveillance and control efforts.In this context, early warning systems based on deep learning–driven forecasting can play an important role by identifying temporal patterns in malaria transmission and supporting evidence-based decision-making for targeted intervention planning. Such predictive approaches align with India’s national malaria elimination strategy (2016–2030) by strengthening preparedness and improving resource prioritization in high-risk transmission settings."
         
@@ -460,7 +455,7 @@ elif st.session_state.page == "data":
 
 elif st.session_state.page == "methods":
     st.subheader("Malaria Outbreak Forecasting & Risk Assessment System")
-
+    st.markdown("<br>", unsafe_allow_html=True)
     st.write("""
     Malaria outbreaks remain a significant public health challenge, particularly in regions with recurring seasonal transmission patterns. Early identification of potential outbreak conditions is essential for timely intervention, resource planning, and effective disease control.
 
@@ -471,7 +466,7 @@ elif st.session_state.page == "methods":
 
 # ---------------- Risk Assessment ----------------
     st.subheader("Risk Assessment")
-
+    st.markdown("<br>", unsafe_allow_html=True)
     st.write("""
     In addition to forecasting future malaria cases, the system includes a dynamic risk assessment mechanism to evaluate the potential severity of predicted outbreak conditions. The risk prediction framework analyzes forecasted malaria incidence and categorizes regions into different risk levels based on historical disease patterns.
 
@@ -480,7 +475,7 @@ elif st.session_state.page == "methods":
 
 # ---------------- Risk Levels ----------------
     st.subheader("Risk Classification Levels")
-
+    st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("""
     - 🟢 **Low Risk**
     - 🟠 **Moderate Risk**
@@ -489,13 +484,13 @@ elif st.session_state.page == "methods":
 
 # ---------------- Thresholds ----------------
     st.subheader("Classification Thresholds")
-
+    st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("""
     - Predicted case values below the **33rd percentile** are classified as **Low Risk**
     - Predicted case values between the **33rd and 66th percentiles** are classified as **Moderate Risk**
     - Predicted case values above the **66th percentile** are classified as **High Risk**
     """)
-
+    st.markdown("<br>", unsafe_allow_html=True)
     st.write("""
     By utilizing adaptive statistical thresholds instead of fixed predefined limits, the framework provides a more flexible and region-specific approach to malaria outbreak assessment, improving the effectiveness of early warning and public health monitoring.
     """)
