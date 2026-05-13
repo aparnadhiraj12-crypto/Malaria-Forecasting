@@ -432,14 +432,20 @@ if st.session_state.page == "home":
 # ======================================================
 if st.session_state.page == "home":
     st.subheader("Overview")
-   
+    st.markdown("<br>", unsafe_allow_html=True)
+
     st.markdown("""
     The primary objective of this platform is to develop an AI-driven early warning system for forecasting malaria outbreaks and detecting potential high-risk situations in advance. By combining advanced deep learning forecasting models with intelligent risk assessment techniques, the system enables accurate prediction of future malaria trends and supports proactive public health decision-making. The platform is designed to assist healthcare authorities and researchers in improving outbreak preparedness, optimizing resource allocation, and implementing timely preventive measures through data-driven insights.
     """)
 
 elif st.session_state.page == "about":
     st.subheader("About Us")
-   
+    st.markdown(
+    """
+    <div style='margin-top: 20px;'></div>
+    """,
+    unsafe_allow_html=True
+    )
     st.write(
         "Indian Institute of Chemical Technology (IICT), Hyderabad, established in 1944, is a constituent laboratory of the Council of Scientific and Industrial Research (CSIR), New Delhi. With its expertise in chemistry and chemical technology, it provides solutions to challenges faced by Industry, Government Departments and Entrepreneurs through basic and applied research, and process development. The institute is internationally recognized for its contributions to chemistry research and is an ideal place for taking ideas to commercialization through state-of-the-art research and development. CSIR-IICT during its seventy-year journey has made its mark as a dynamic, innovative and result-oriented R&D organization. The clientele spans all comers of the globe. In India, it is CSIR-Indian Institute of Chemical Technology (CSIR-IICT) is one of the oldest National Laboratories the reliable destination of chemical and biotech industries. The reputation that CSIR-IICT could establish amongst the industrial clients as a reliable R&D partner, can be largely attributed to its rich pool of scientists with expertise in broad-ranging research areas and simple and effective business development strategies."
     )
