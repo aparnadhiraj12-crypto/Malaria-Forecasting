@@ -377,53 +377,61 @@ def img_to_base64(path):
     with open(path, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
+
 if st.session_state.page == "home":
 
-    left_img = img_to_base64("images/image 10.png")
-    right_img = img_to_base64("images/image 4.png")
+    hero_img = img_to_base64("images/image 18.png")
 
     st.markdown(f"""
     <style>
 
+    /* Remove Streamlit default spacing */
+    .main .block-container {{
+        max-width: 100%;
+        padding-top: 0rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }}
+
+    /* Hero section */
     .hero-wrapper {{
-        display: flex;
         width: 100%;
-        gap: 14px;
-        margin-bottom: 28px;
+        margin-top: 10px;
+        margin-bottom: 25px;
     }}
 
-    .hero-left {{
-        flex: 4;        /* 70% */
-        height: 650px;
-        overflow: hidden;
-    }}
-
-    .hero-right {{
-        flex: 3;        /* 30% */
-        height: 650px;
-        overflow: hidden;
-    }}
-
-    .hero-left img,
-    .hero-right img {{
+    .hero-image {{
         width: 100%;
-        height: 100%;
+        overflow: hidden;
+        border-radius: 18px;
+    }}
+
+    .hero-image img {{
+        width: 100%;
+        height: auto;
+
         object-fit: cover;
         object-position: center;
+
         display: block;
-        border-radius: 8px;
+
+        border-radius: 18px;
+
+        box-shadow:
+            0 4px 14px rgba(0,0,0,0.12),
+            0 10px 30px rgba(0,0,0,0.08);
+
+        transition: all 0.3s ease-in-out;
     }}
 
     </style>
 
     <div class="hero-wrapper">
-        <div class="hero-left">
-            <img src="data:image/png;base64,{left_img}">
-        </div>
-        <div class="hero-right">
-            <img src="data:image/png;base64,{right_img}">
+        <div class="hero-image">
+            <img src="data:image/png;base64,{hero_img}">
         </div>
     </div>
+
     """, unsafe_allow_html=True)
 
     st.markdown("---")
