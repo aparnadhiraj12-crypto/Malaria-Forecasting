@@ -380,7 +380,7 @@ def img_to_base64(path):
 
 if st.session_state.page == "home":
 
-    hero_img = img_to_base64(r"C:\Users\M. Srinivasa Rao\Shraddha Code\Forecasting\images\image 14.png")
+    hero_img = img_to_base64(r"C:\Users\M. Srinivasa Rao\Shraddha Code\Forecasting\images\image 18.png")
 
     st.markdown(f"""
     <style>
