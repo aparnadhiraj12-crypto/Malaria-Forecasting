@@ -11,3 +11,5 @@ optuna
 tensorboard
 statsmodels
 reportlab
+openpyxl
+pillow
