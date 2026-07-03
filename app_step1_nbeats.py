@@ -1461,7 +1461,7 @@ elif st.session_state.page == "team":
     )
 
     team_card(
-        image_path="images/image 26.jpg",
+        image_path="images/image 28.jpg",
         name="Jangili Shraddha",
         designation="PhD Scholar",
         education= " Mtech CS",
@@ -1470,7 +1470,7 @@ elif st.session_state.page == "team":
     )
 
     team_card(
-        image_path="images/image 26.jpg",
+        image_path="images/image 28.jpg",
         name="hello",
         designation="Mtech",
         education= " PhD ",
@@ -1479,7 +1479,7 @@ elif st.session_state.page == "team":
     )
 
     team_card(
-        image_path="images/image 26.jpg",
+        image_path="images/image 28.jpg",
         name="hello",
         designation="Mtech",
         education= " PhD ",
