@@ -1362,7 +1362,7 @@ def team_card(
         st.markdown(f"## {name}")
         st.markdown(f"**{designation}**")
         st.markdown(f"**{education}**")
-        st.markdown(f"📧 **Email:** {email}")
+        st.markdown(f"✉ **Email:** {email}")
         st.markdown(f"**LinkedIn:** [{linkedin}]({linkedin})")
     st.markdown("---")
 
