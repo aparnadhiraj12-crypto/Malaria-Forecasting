@@ -1353,7 +1353,7 @@ def team_card(
     designation,
     education,
     email,
-    linkedin:
+    linkedin
 ):
     col1, col2 = st.columns([1, 4], vertical_alignment="center")
     with col1:
