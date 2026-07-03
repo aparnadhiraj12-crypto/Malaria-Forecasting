@@ -1382,7 +1382,25 @@ elif st.session_state.page == "about":
     st.markdown("<br>", unsafe_allow_html=True)
     st.write(
         "Indian Institute of Chemical Technology (IICT), Hyderabad, established in 1944, is a constituent laboratory of the Council of Scientific and Industrial Research (CSIR), New Delhi. With its expertise in chemistry and chemical technology, it provides solutions to challenges faced by Industry, Government Departments and Entrepreneurs through basic and applied research, and process development. The institute is internationally recognized for its contributions to chemistry research and is an ideal place for taking ideas to commercialization through state-of-the-art research and development. CSIR-IICT during its seventy-year journey has made its mark as a dynamic, innovative and result-oriented R&D organization. The clientele spans all comers of the globe. In India, it is CSIR-Indian Institute of Chemical Technology (CSIR-IICT) is one of the oldest National Laboratories the reliable destination of chemical and biotech industries. The reputation that CSIR-IICT could establish amongst the industrial clients as a reliable R&D partner, can be largely attributed to its rich pool of scientists with expertise in broad-ranging research areas and simple and effective business development strategies."
-    )   
+    )
+    # ---------------- Vission ---------------- #
+    st.markdown("""
+    <div class="section-title">
+    Vision
+    </div>
+    """, unsafe_allow_html=True)
+    st.write("""
+    To Serve society by creating an outstanding knowledge base in chemical and chemical technology
+    """)
+    # ---------------- Mission ---------------- #
+    st.markdown("""
+    <div class="section-title">
+    Mission
+    </div>
+    """, unsafe_allow_html=True)
+    st.write("""
+    CSIR-IICT will Strive towards knowledge intensive translational research in chemistry to meet the country's expectations with novel technologies.
+    """)
 
 elif st.session_state.page == "data":
     page_title("About the Data")
