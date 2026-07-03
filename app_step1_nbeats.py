@@ -1448,7 +1448,7 @@ elif st.session_state.page == "team":
     page_title("Our Team")
 
     team_card(
-        image_path="images/image 27.png",
+        image_path="images/image 27.PNG",
         name="Dr.M.Srinivasa Rao",
         designation="Scientist - F ",
         education= " PhD ,Zoology",
@@ -1467,19 +1467,19 @@ elif st.session_state.page == "team":
 
     team_card(
         image_path="images/image 26.jpg",
-        name="Dr. T Rajith",
-        designation="Scientist (Mtech)",
-        education= " PhD ,Zoology",
-        email="rajith@iict.res.in",
+        name="hello",
+        designation="Mtech",
+        education= " PhD ",
+        email="rah@iict.res.in",
         linkedin="linkedin.com/in/jangili-shraddha-545423201"
     )
 
     team_card(
         image_path="images/image 26.jpg",
-        name="Dr. T Rajith",
-        designation="Scientist (Mtech)",
-        education= " PhD ,Zoology",
-        email="rajith@iict.res.in",
+        name="hello",
+        designation="Mtech",
+        education= " PhD ",
+        email="rah@iict.res.in",
         linkedin="linkedin.com/in/jangili-shraddha-545423201"
     )
     
