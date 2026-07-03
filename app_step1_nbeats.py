@@ -2430,9 +2430,9 @@ elif st.session_state.page == "forecast":
 # FOOTER
 # ======================================================
 st.markdown("""
-<div class="footer">
-<b>CSIR – Indian Institute of Chemical Technology (IICT)</b>
-<b>Environmental Information,Awareness,Capacity Building and Livelihood Programme (EIACP)</b>
-<b>Ministry of Environment,Forest and Climate Change (MoEFCC)</b>
+<div class="footer" style="text-align:center;">
+    <p><strong>CSIR – Indian Institute of Chemical Technology (CSIR-IICT)</strong></p>
+    <p>Environmental Information, Awareness, Capacity Building and Livelihood Programme (EIACP)</p>
+    <p>Ministry of Environment, Forest and Climate Change (MoEFCC), Government of India</p>
 </div>
-""", unsafe_allow_html=True)    
+""", unsafe_allow_html=True) 
