@@ -1353,7 +1353,7 @@ def team_card(
     designation,
     education,
     email,
-    linkedin
+    linkedin:
 ):
     col1, col2 = st.columns([1, 4], vertical_alignment="center")
     with col1:
@@ -1367,7 +1367,7 @@ def team_card(
             f"<p style='margin:4px 0 12px 0;font-size:18px;color:#555;'>{education}</p>",
             unsafe_allow_html=True,)
         st.markdown(f"✉ **Email:** {email}")
-        st.markdown(f"**LinkedIn:** [{linkedin}]({linkedin})")
+        st.markdown(f"👤 **Personal Profile Link:** [{linkedin}]({linkedin})")
     st.markdown("---")
 
 if st.session_state.page == "home":
