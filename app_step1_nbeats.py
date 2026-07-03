@@ -1360,8 +1360,12 @@ def team_card(
         st.image(image_path, width=180)
     with col2:
         st.markdown(f"## {name}")
-        st.markdown(f"**{designation}**")
-        st.markdown(f"**{education}**")
+        st.markdown(
+            f"<p style='margin:0;font-size:22px;font-weight:600;'>{designation}</p>",
+            unsafe_allow_html=True,)
+        st.markdown(
+            f"<p style='margin:4px 0 12px 0;font-size:18px;color:#555;'>{education}</p>",
+            unsafe_allow_html=True,)
         st.markdown(f"✉ **Email:** {email}")
         st.markdown(f"**LinkedIn:** [{linkedin}]({linkedin})")
     st.markdown("---")
