@@ -1511,23 +1511,15 @@ elif st.session_state.page == "contact":
 
     st.markdown("""
     ### CSIR – Indian Institute of Chemical Technology (CSIR-IICT)
-
     **Academy of Scientific and Innovative Research (AcSIR)**
-
     ---
-
     **👤 Contact Name:** Dr. D. Srinivasa Reddy
-
     **📍 Contact Address:**  
     CSIR – Indian Institute of Chemical Technology (CSIR-IICT)  
     Tarnaka, Hyderabad – 500007  
     Telangana, India
-
     **☎ Contact Phone:** +91-40-27191234
-
     **✉ Email:** director@iict.res.in
-
-    ** Project Contact:** jshraddha888@gmail.com
     """)
 
 elif st.session_state.page == "admin":
