@@ -1408,7 +1408,8 @@ elif st.session_state.page == "data":
     st.write(
         "Malaria remains a major public health challenge in the North-Eastern states of India, which contribute a disproportionately high share of the country’s Plasmodium falciparum burden and represent some of the most persistent transmission zones nationally. The region accounts for about 15% of India’s malaria cases and roughly 12% of the national P. falciparum cases, the most severe form of malaria infection.Transmission in this region is sustained by efficient vector species such as Anopheles minimus and Anopheles baimaii, along with favorable ecological conditions including forested terrain, high humidity, and perennial hill streams that support continuous mosquito breeding. In addition, the North-East serves as a critical epidemiological corridor linking India with Southeast Asia, facilitating the historical introduction of antimalarial drug-resistant parasite strains into the country. Many malaria-affected areas in the region are located in tribal and difficult-to-access locations, which further complicates surveillance and control efforts.In this context, early warning systems based on deep learning–driven forecasting can play an important role by identifying temporal patterns in malaria transmission and supporting evidence-based decision-making for targeted intervention planning. Such predictive approaches align with India’s national malaria elimination strategy (2016–2030) by strengthening preparedness and improving resource prioritization in high-risk transmission settings."
      
-    )  
+    )
+    
 
 elif st.session_state.page == "forecasting":
     page_title(
@@ -1506,28 +1507,24 @@ elif st.session_state.page == "team":
     )
     
 elif st.session_state.page == "contact":
-
     page_title("Contact Us")
-
     st.markdown("""
     ### CSIR – Indian Institute of Chemical Technology (CSIR-IICT)
-    
+                
     **Academy of Scientific and Innovative Research (AcSIR)**
-    
+                
     ---
-    
+                
     **👤 Contact Name:** Dr. D. Srinivasa Reddy
-    
+                
     **📍 Contact Address:**  
-    
+                
     CSIR – Indian Institute of Chemical Technology (CSIR-IICT)  
-    
     Tarnaka, Hyderabad – 500007  
-    
     Telangana, India
-    
+                
     **☎ Contact Phone:** +91-40-27191234
-    
+                
     **✉ Email:** director@iict.res.in
     """)
 
@@ -2085,19 +2082,15 @@ elif st.session_state.page == "forecast":
             # ================= CONVERT BACK TO ORIGINAL SCALE =================
 
             data["Cases"] = np.exp(data["LogCases"])
-
             forecast_df["Forecasted Cases"] = np.exp(
                 forecast_df["Forecasted LogCases"]
             )
-
             forecast_df["Lower CI Cases"] = np.exp(
                 forecast_df["Lower CI"]
             )
-
             forecast_df["Upper CI Cases"] = np.exp(
                 forecast_df["Upper CI"]
             )
-
             # ---------------- Metrics ----------------
             st.markdown("<br>", unsafe_allow_html=True)
 
@@ -2149,12 +2142,18 @@ elif st.session_state.page == "forecast":
                     y=data["Cases"],
                     mode="lines+markers",
                     name="Historical Cases",
-                    line=dict(color="#006666", width=3),
-                    marker=dict(size=6),
+                    showlegend=True,
+                    line=dict(
+                        color="#004680",
+                        width=3
+                    ),
+                    marker=dict(
+                        size=6,
+                        color="#004680"
+                    ),
                     hovertemplate="<b>Month:</b> %{x}<br><b>Cases:</b> %{y:.2f}<extra></extra>"
                 )
             )
-
             # ---------------- Empty Forecast Trace (For Animation) ----------------
             fig.add_trace(
                 go.Scatter(
@@ -2162,8 +2161,17 @@ elif st.session_state.page == "forecast":
                     y=[],
                     mode="lines+markers",
                     name="Forecast",
-                    line=dict(color="#cc3300", width=3, dash="dash"),
-                    marker=dict(size=6),
+                    line=dict(
+                        color="#ff6435",
+                        width=3,
+                        dash="dash",
+                        shape="spline",
+                        smoothing=1.1
+                    ),
+                    marker=dict(
+                        size=5,
+                        color="#ff6b35"
+                    ),
                     hovertemplate="<b>Month:</b> %{x}<br><b>Forecast:</b> %{y:.2f}<extra></extra>"
                 )
             )
@@ -2171,47 +2179,33 @@ elif st.session_state.page == "forecast":
             # ================= CREATE ANIMATION FRAMES =================
 
             frames = []
-
             for i in range(1, len(forecast_x) + 1):
                 frames.append(
                     go.Frame(
                         data=[
                             go.Scatter(
                                 x=forecast_x[:i],
-                                y=forecast_y[:i]
+                                y=forecast_y[:i],
+                                mode="lines+markers",
+                                name="Forecast",
+                                line=dict(
+                                    color="#ff6b35",
+                                    width=3,
+                                    dash="dash",
+                                    shape="spline",
+                                    smoothing=1.1
+                                ),
+                                marker=dict(
+                                    size=5,
+                                    color="#ff6b35"
+                                ),
+                                showlegend=True
                             )
                         ],
                         traces=[1] 
                     )
                 )
-
             fig.frames = frames
-
-            # ================= CONFIDENCE INTERVAL =================
-
-            fig.add_trace(
-                go.Scatter(
-                    x=forecast_df["Month"],
-                    y=forecast_df["Upper CI"],
-                    mode="lines",
-                    line=dict(width=0),
-                    showlegend=False,
-                    hoverinfo="skip"
-                )
-            )
-
-            fig.add_trace(
-                go.Scatter(
-                    x=forecast_df["Month"],
-                    y=forecast_df["Lower CI"],
-                    mode="lines",
-                    fill="tonexty",
-                    fillcolor="rgba(255, 204, 153, 0.4)",
-                    line=dict(width=0),
-                    name="95% Confidence Interval",
-                    hoverinfo="skip"
-                )
-            )
 
             # ================= ANIMATION BUTTON WITH EASING =================
 
@@ -2219,11 +2213,11 @@ elif st.session_state.page == "forecast":
                 updatemenus=[
                     dict(
                         type="buttons",                                                           
-                        showactive=True,
-                        bgcolor="#006666",          
-                        bordercolor="#004c4c",
+                        showactive=False,
+                        bgcolor="#004680",          
+                        bordercolor="#004680",
                         borderwidth=2,
-                        font=dict(color="black", size=13),
+                        font=dict(color="white", family="Arial",size=13),
 
                         buttons=[
                             dict(
@@ -2232,9 +2226,9 @@ elif st.session_state.page == "forecast":
                                 args=[
                                     None,
                                     dict(
-                                        frame=dict(duration=700, redraw=True),
+                                        frame=dict(duration=650, redraw=True),
                                         transition=dict(
-                                            duration=600,
+                                            duration=450,
                                             easing="cubic-in-out"
                                         ),
                                         fromcurrent=True
@@ -2247,7 +2241,7 @@ elif st.session_state.page == "forecast":
                         y=1.18,
                         xanchor="right",
                         yanchor="top",
-                        pad=dict(t=8, r=10)
+                        pad=dict(t=8, r=8)
                     )
                 ]
             )
@@ -2280,7 +2274,7 @@ elif st.session_state.page == "forecast":
             # ================= RENDER =================
 
             st.plotly_chart(fig, use_container_width=True)
-
+            
             # ---------------- Forecast Table ----------------
             st.subheader(f"{HORIZON}-Month Forecast with Confidence Intervals & Risk")
 
@@ -2297,33 +2291,119 @@ elif st.session_state.page == "forecast":
                 use_container_width=True
             )
 
-            # ================= OVERALL RISK =================
-            overall_risk = forecast_df["Risk Level"].value_counts().idxmax()
+            # ======================================================
+            # AI RISK ASSESSMENT
+            # ======================================================
 
-            st.markdown("---")
-            st.subheader("Overall Risk Assessment")
+            overall_risk = forecast_df["Risk Level"].value_counts().idxmax()
+            avg_cases = round(forecast_df["Forecasted Cases"].mean())
 
             if overall_risk == "Low Risk":
                 risk_color = "#2ECC71"
+                risk_icon = "🟢"
+                status = "Routine Monitoring"
+
             elif overall_risk == "Medium Risk":
                 risk_color = "#F39C12"
+                risk_icon = "🟠"
+                status = "Enhanced Surveillance"
+
             else:
                 risk_color = "#E74C3C"
+                risk_icon = "🔴"
+                status = "Immediate Preventive Action"
+
+            st.markdown("## Overall Risk Assessment")
+
             st.markdown(f"""
             <div style="
-                background: {risk_color};
-                padding: 18px;
-                border-radius: 12px;
-                text-align: center;
-                font-size: 20px;
-                font-weight: 600;
-                color: white;
-                box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-                margin-bottom: 25px;
+            background:white;
+            border-left:8px solid {risk_color};
+            padding:22px;
+            border-radius:16px;
+            box-shadow:0 8px 20px rgba(0,0,0,.08);
+            margin-bottom:25px;
             ">
-            Forecasted Malaria Risk in {selected_state}: {overall_risk}
+            <table style="width:100%;font-size:18px;border-collapse:collapse;">
+            <tr>
+            <td style="padding:8px;"><b>State</b></td>
+            <td>{selected_state}</td>
+            </tr>
+            <tr>
+            <td style="padding:8px;"><b>Forecast Horizon</b></td>
+            <td>{HORIZON} Months</td>
+            </tr>
+            <tr>
+            <td style="padding:8px;"><b>Average Forecast Cases</b></td>
+            <td>{avg_cases}</td>
+            </tr>
+            <tr>
+            <td style="padding:8px;"><b>Predicted Risk</b></td>
+            <td style="color:{risk_color};font-weight:bold;">
+            {risk_icon} {overall_risk}
+            </td>
+            </tr>
+            </table>
             </div>
             """, unsafe_allow_html=True)
+            # ======================================================
+            # RECOMMENDED PUBLIC HEALTH ACTIONS
+            # ======================================================
+
+            st.markdown("## Recommended Public Health Actions")
+
+            if overall_risk == "High Risk":
+
+                precautions = [
+                    "Intensify malaria surveillance across high-risk areas.",
+                    "Conduct indoor residual spraying (IRS) and larval source management.",
+                    "Ensure adequate stock of antimalarial drugs and rapid diagnostic kits.",
+                    "Strengthen vector monitoring and mosquito breeding site control.",
+                    "Launch community awareness campaigns on malaria prevention.",
+                    "Increase active fever screening and early case detection.",
+                    "Coordinate with district health authorities for rapid response."
+                ]
+
+            elif overall_risk == "Medium Risk":
+
+                precautions = [
+                    "Maintain routine malaria surveillance.",
+                    "Promote the use of insecticide-treated bed nets.",
+                    "Remove stagnant water and mosquito breeding sites.",
+                    "Increase public awareness on malaria prevention.",
+                    "Monitor weekly malaria trends for early warning.",
+                    "Ensure availability of diagnostic and treatment facilities."
+                ]
+
+            else:
+
+                precautions = [
+                    "Continue routine surveillance activities.",
+                    "Maintain environmental sanitation and vector control.",
+                    "Encourage early diagnosis and prompt treatment.",
+                    "Promote continued use of mosquito nets.",
+                    "Monitor seasonal changes that may increase malaria transmission."
+                ]
+            
+            actions_html = "<br>".join(
+                [f"▸ {item}" for item in precautions]
+            )
+
+            st.markdown(f"""
+            <div style="
+            background:#ffffff;
+            border-radius:16px;
+            padding:22px;
+            box-shadow:0 8px 20px rgba(0,0,0,.08);
+            margin-bottom:30px;
+            border-left:8px solid {risk_color};
+            ">
+            {actions_html}
+
+            </div>
+            """, unsafe_allow_html=True)
+
+            st.markdown("</div>", unsafe_allow_html=True)
             # ================= NORTH EAST SPATIAL MAP =================
             st.markdown("---")
 
@@ -2458,4 +2538,4 @@ st.markdown("""
     <p>Environmental Information, Awareness, Capacity Building and Livelihood Programme (EIACP)</strong></p>
     <p>Ministry of Environment, Forest and Climate Change (MoEFCC)</strong></p>
 </div>
-""", unsafe_allow_html=True) 
+""", unsafe_allow_html=True)   
