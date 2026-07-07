@@ -13,4 +13,4 @@ statsmodels
 reportlab
 openpyxl
 pillow
-python>3.10
+
